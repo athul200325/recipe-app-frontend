@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
 
-  private serverUrl = 'http://localhost:8000';
+  private serverUrl = 'https://recipe-app-server-oais.onrender.com';
 
   constructor(private http: HttpClient) { }
 
