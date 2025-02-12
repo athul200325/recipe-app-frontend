@@ -1,0 +1,53 @@
+
+.nav-link:hover {
+    color: #E9EED9 !important; 
+  }
+
+  /* Sidebar Styling */
+.sidebar {
+  background: #198754; /* Rich Green */
+  color: #fff;
+  height: 100vh;
+}
+
+.sidebar-link {
+  color: #cbd2a4;
+  font-weight: 500;
+  padding: 12px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.sidebar-logout {
+  border: 1px solid white;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar-logout:hover {
+  background: white;
+  color: #198754;
+  font-weight: bold;
+}
+
+/* Table Styling */
+.table {
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+.table th {
+  text-align: center;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(25, 135, 84, 0.1);
+  transition: background 0.3s;
+}

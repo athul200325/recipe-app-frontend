@@ -1,0 +1,65 @@
+.btn{
+    background-color: #54602F;
+    color:#CBD2A4;
+}
+.btn:hover{
+    outline:2px solid #CBD2A4;
+    color: #CBD2A4;
+}
+h1{
+    color:#543c2e;
+}
+.head2{
+    color:#8c926a;
+}
+p{
+    color: #9A7E6F;
+}
+h3{
+    color:#A9B57F;
+}
+h4{
+    color:#8A9A64;
+}
+h5{
+    color:#6A7A4C;
+}
+
+/* Background Image Section */
+.login-bg {
+    background: url('https://images2.alphacoders.com/101/1019901.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+/* Dark Overlay */
+.login-bg .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+}
+
+/* Login Box Styling */
+.login-box {
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+}
+
+/* Input Styling */
+input.form-control {
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 16px;
+}
+
+/* Button Styling */
+.btn-success {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 5px;
+}

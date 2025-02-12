@@ -1,0 +1,120 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div style="min-height: 100vh;" class="bg-success text-light col-lg-3 col-sm-3 d-flex flex-column p-3 shadow position-fixed">
+      <!-- Sidebar Brand -->
+      <h5 class="text-center pb-3 border-bottom">
+        <a class="navbar-brand fw-bold text-light" routerLink="">
+          <i class="fa-solid mb-2 fa-utensils me-2"></i> TastyTrails Admin
+        </a>
+      </h5>
+
+      <!-- Sidebar Menu -->
+      <ul class="nav flex-column mt-3">
+        <li class="nav-item">
+          <a class="nav-link text-light sidebar-link ms-3 mb-2" routerLink="/admin">
+            <i class="fa-solid mb-2 fa-chart-line me-2"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/recipe/add">
+            <i class="fa-solid mb-2 fa-plus me-2"></i> Manage Recipe
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-recipes">
+            <i class="fa-solid mb-2 fa-list me-2"></i> Recipe List
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-request">
+            <i class="fa-solid mb-2 fa-envelope me-2"></i> Requests
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-downloads">
+            <i class="fa-solid mb-2 fa-download me-2"></i> Downloads
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-users">
+            <i class="fa-solid mb-2 fa-users me-2"></i> Users
+          </a>
+        </li>
+
+        <!-- Logout Button -->
+        <li class="nav-item mt-4">
+          <button (click)="logout()" class="btn btn-outline-light w-100 py-2 sidebar-logout">
+            <i class="fa-solid mb-2 fa-right-from-bracket me-2"></i> Logout
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div style="height: 84vh;" class="col offset-lg-3 p-4">
+      <h1 class="text-start mb-5 text-dark fw-medium">Admin Dashboard</h1>
+    
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="card shadow p-3 text-center bg-white rounded d-flex align-items-center">
+            <i class="fa-solid mb-2 fa-book fa-2x text-primary me-3"></i>
+            <div>
+              <h5>Total Recipes</h5>
+              <p>{{recipeCount}}</p>
+            </div>
+          </div>    
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow p-3 text-center bg-white rounded d-flex align-items-center">
+            <i class="fa-solid mb-2 fa-users fa-2x text-success me-3"></i>
+            <div>
+              <h5>Total Users</h5>
+              <p>{{userCount}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow p-3 text-center bg-white rounded d-flex align-items-center">
+            <i class="fa-solid mb-2 fa-envelope fa-2x text-warning me-3"></i>
+            <div>
+              <h5>Pending Requests</h5>
+              <p>{{testimonyCount}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="card shadow p-3 text-center bg-white rounded d-flex align-items-center">
+            <i class="fa-solid mb-2 fa-user-plus fa-2x text-info me-3"></i>
+            <div>
+              <h5>New Registrations</h5>
+              <p>50</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow p-3 text-center bg-white rounded d-flex align-items-center">
+            <i class="fa-solid mb-2 fa-user-check fa-2x text-success me-3"></i>
+            <div>
+              <h5>Active Users</h5>
+              <p>45</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow p-3 text-center bg-white rounded d-flex align-items-center">
+            <i class="fa-solid mb-2 fa-comments fa-2x text-secondary me-3"></i>
+            <div>
+              <h5>Recipe Feedbacks</h5>
+              <p>45</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

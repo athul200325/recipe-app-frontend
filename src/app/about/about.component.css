@@ -1,0 +1,24 @@
+
+.head2{
+    color:#8c926a;
+}
+p{
+    color: #9A7E6F;
+    text-align: justify;
+    margin-right: 10px;
+}
+h3{
+    color:#A9B57F;
+}
+h4{
+    color:#8A9A64;
+}
+h5{
+    color:#6A7A4C;
+}
+.line{
+
+    border-left: 2px solid #6A7A4C;
+    height: 150px;
+margin-right: 10px;
+}

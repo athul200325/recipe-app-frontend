@@ -1,0 +1,155 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div style="min-height: 100vh;" class="bg-success text-light col-lg-3 col-sm-3 d-flex flex-column p-3 shadow position-fixed">
+      <!-- Sidebar Brand -->
+      <h5 class="text-center pb-3 border-bottom">
+        <a class="navbar-brand fw-medium text-light" routerLink="">
+          <i class="fa-solid fa-utensils me-2"></i> TastyTrails Admin
+        </a>
+      </h5>
+
+      <!-- Sidebar Menu -->
+      <ul class="nav flex-column mt-3">
+        <li class="nav-item">
+          <a class="nav-link text-light sidebar-link ms-3 mb-2" routerLink="/admin">
+            <i class="fa-solid fa-chart-line me-2"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/recipe/add">
+            <i class="fa-solid fa-plus me-2"></i> Manage Recipe
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-recipes">
+            <i class="fa-solid fa-list me-2"></i> Recipe List
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-request">
+            <i class="fa-solid fa-envelope me-2"></i> Requests
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-downloads">
+            <i class="fa-solid fa-download me-2"></i> Downloads
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-users">
+            <i class="fa-solid fa-users me-2"></i> Users
+          </a>
+        </li>
+
+        <!-- Logout Button -->
+        <li class="nav-item mt-4">
+          <button class="btn btn-outline-light w-100 py-2 sidebar-logout">
+            <i class="fa-solid fa-right-from-bracket me-2"></i> Logout
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col offset-lg-3 p-4">
+      <h1 class="text-start text-dark fw-medium">Add Recipe</h1>
+
+      <div class="card p-4 shadow">
+        <div class="form-group mb-3">
+          <label class="fw-medium">Recipe Name</label>
+          <input type="text" [(ngModel)]="recipeDetails.name" placeholder="Enter the recipe name" class="form-control">
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group mb-3">
+              <label class="fw-medium">Preparation Time (mins)</label>
+              <input type="number" [(ngModel)]="recipeDetails.prepTimeMinutes" placeholder="e.g., 30" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group mb-3">
+              <label class="fw-medium">Cooking Time (mins)</label>
+              <input type="number" [(ngModel)]="recipeDetails.cookTimeMinutes" placeholder="e.g., 45" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group mb-3">
+              <label class="fw-medium">Servings</label>
+              <input type="number" [(ngModel)]="recipeDetails.servings" placeholder="e.g., 4" class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="fw-medium">Difficulty</label>
+          <select [(ngModel)]="recipeDetails.difficulty" class="form-control">
+            <option value="" disabled selected>Select Difficulty</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label class="fw-medium">Cuisine Type</label>
+              <input type="text" [(ngModel)]="recipeDetails.cuisine" placeholder="e.g., Italian, Mexican" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label class="fw-medium">Calories Per Serving</label>
+              <input type="number" [(ngModel)]="recipeDetails.caloriesPerServing" placeholder="e.g., 250" class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="fw-medium">Image URL</label>
+          <div class="d-flex align-items-center">
+            <div style="flex: 1;">
+              <input type="text" [(ngModel)]="recipeDetails.image" placeholder="Enter the image URL" class="form-control">
+            </div>
+            <div class="ms-3">
+              <img *ngIf="recipeDetails.image" [src]="recipeDetails.image" alt="Preview" class="img-thumbnail" style="width: 120px; height: 120px; object-fit: cover;">
+            </div>
+          </div>
+        </div>
+        
+        
+
+        <div class="form-group mb-3">
+          <label class="fw-medium">Ingredients</label>
+          <div class="d-flex">
+            <input #ingredientInput placeholder="Add an ingredient" class="form-control me-2">
+            <button (click)="addIngredient(ingredientInput.value)" class="btn btn-dark">+</button>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="fw-medium">Instructions</label>
+          <div class="d-flex">
+            <input #instructionInput placeholder="Add an instruction step" class="form-control me-2">
+            <button (click)="addInstruction(instructionInput.value)" class="btn btn-dark">+</button>
+          </div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="fw-medium">Meal Type</label>
+          <div class="d-flex flex-wrap">
+            <div *ngFor="let type of ['Dinner', 'Lunch', 'Beverage', 'Salad', 'Appetizer', 'Dessert', 'Breakfast']" class="me-3">
+              <label class="form-check-label">
+                <input type="checkbox" (change)="toggleMealType($event)" [value]="type"> {{ type }}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button (click)="addRecipe()" class="btn btn-success w-100">Add Recipe</button>
+      </div>
+    </div>   
+  </div>
+</div>

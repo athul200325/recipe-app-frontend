@@ -1,0 +1,77 @@
+<app-header></app-header>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-4 bg-light p-4 h-75 rounded shadow">
+            <h4 class="fw-bold text-dark">Filter</h4>
+            <button (click)="clearFilter()" class="btn btn-dark mt-4 w-100">All</button>
+            <br>
+            
+            <!-- Cuisine Type -->
+            <button class="btn btn-outline-dark dropdown-toggle w-100 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCuisine" aria-expanded="false" aria-controls="collapseCuisine">
+                Cuisine Type
+            </button>
+            <div class="collapse mt-2" id="collapseCuisine">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-light border" (click)="filterRecipes('cuisine','Italian')">Italian</button>
+                    <button class="btn btn-light border" (click)="filterRecipes('cuisine','Asian')">Asian</button>
+                    <button class="btn btn-light border" (click)="filterRecipes('cuisine','American')">American</button>
+                    <button class="btn btn-light border" (click)="filterRecipes('cuisine','Mexican')">Mexican</button>
+                    <button class="btn btn-light border" (click)="filterRecipes('cuisine','Indian')">Indian</button>
+                    <button class="btn btn-light border" (click)="filterRecipes('cuisine','Pakistani')">Pakistani</button>
+                    <button class="btn btn-light border" (click)="filterRecipes('cuisine','Japanese')">Japanese</button>
+                    <button class="btn btn-light border" (click)="filterRecipes('cuisine','Thai')">Thai</button>
+                </div>
+            </div>
+
+            <!-- Meal Type -->
+            <button class="btn btn-outline-dark dropdown-toggle w-100 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMeal" aria-expanded="false" aria-controls="collapseMeal">
+                Meal Type
+            </button>
+            <div class="collapse mt-2" id="collapseMeal">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-light border" (click)="filterRecipes('mealType','Dinner')">Dinner</button>
+                    <button class="btn btn-light border" (click)="filterRecipes('mealType','Lunch')">Lunch</button>
+                    <button class="btn btn-light border" (click)="filterRecipes('mealType','Dessert')">Dessert</button>
+                    <button class="btn btn-light border" (click)="filterRecipes('mealType','Appetizer')">Appetizer</button>
+                    <button class="btn btn-light border" (click)="filterRecipes('mealType','Breakfast')">Breakfast</button>
+                    <button class="btn btn-light border" (click)="filterRecipes('mealType','Beverage')">Beverage</button>
+                    <button class="btn btn-light border" (click)="filterRecipes('mealType','Salad')">Salad</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="fw-medium text-dark">All Recipes</h1>
+                <input type="text" [(ngModel)]="searchKey" class="form-control w-50 ms-auto shadow-sm" placeholder="Search your recipes...">
+            </div>
+
+            <div class="row my-3">
+                @if(allRecipes.length>0){
+                    @for(recipe of allRecipes|search:searchKey|paginate: { itemsPerPage: 6, currentPage: p }; track $index){
+                        <div style="cursor: pointer;" class="col-lg-4 mb-4">
+                            <div class="card shadow-lg border-0 overflow-hidden">
+                                <img class="card-img-top" (click)="viewRecipes(recipe._id)" [src]="recipe.image" alt="">
+                                <div class="card-body text-center">
+                                    <h5 class="fw-bold text-dark">{{recipe.name}}</h5>
+                                    <p class="text-muted mb-1">Cuisine: <span class="text-primary">{{recipe.cuisine}}</span></p>
+                                    <p class="text-muted">Meal Type: <span class="text-success">{{recipe.mealType}}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @if ((allRecipes|search:searchKey).length==0) {
+                        <div class="fw-bold text-danger text-center">Recipes Not Found...</div>
+                    }
+                }@else{
+                    <div class="fw-bold text-danger text-center">Recipes Not Found...</div>
+                }
+
+                <div class="text-center mt-4">
+                    <pagination-controls class="d-inline-block shadow-sm" (pageChange)="p=$event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

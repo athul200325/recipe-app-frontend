@@ -1,0 +1,90 @@
+<app-header></app-header>
+<div class="container my-5">
+    <h1 class="text-center fw-bold text-dark"></h1>
+    <div class="row mb-5">
+        <div class="col-lg-6">
+            <a style="color: rgb(255, 255, 255); background-color: black;" routerLink="/recipes" class="btn fw-bold mb-4">
+                &#8592; Back to Recipes
+            </a>
+        
+            <div class="recipe-image-container">
+                <img class="img-fluid rounded shadow-lg recipe-img" [src]="recipe.image" alt="Recipe Image">
+            </div>
+        
+            <div class="d-flex justify-content-between mt-4">
+                <button style="color: rgb(255, 255, 255);" (click)="saveRecipe()" class="btn btn-success fw-bold px-4 py-2">
+                    <i class="fas fa-bookmark"></i> Save Recipe
+                </button>
+                <button style="color: rgb(255, 255, 255);" (click)="addDownloadRecipe()" class="btn btn-success fw-bold px-4 py-2">
+                    <i class="fas fa-download"></i> Download Recipe
+                </button>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <h1 class="fw-medium text-dark">{{recipe.name}}</h1>
+            <div class="d-flex justify-content-between my-4 p-3 bg-light rounded shadow">
+                <p class="fw-bold">Cuisine: <span style="color: rgb(80, 80, 80);" class="">{{recipe.cuisine}}</span></p>
+                <p class="fw-bold">Servings: <span style="color: rgb(80, 80, 80);" class="">{{recipe.servings}}</span></p>
+                <p class="fw-bold">Mode of Cooking: <span style="color: rgb(80, 80, 80);" class="">{{recipe.difficulty}}</span></p>
+            </div>
+            <div class="d-flex justify-content-evenly">
+                <div class="d-flex flex-column align-items-center">
+                    <img class="rounded-circle shadow" height="70px" src="https://static.vecteezy.com/system/resources/previews/019/873/849/original/clock-icon-transparent-free-icon-free-png.png" alt="">
+                    <p class="fw-bold mt-2">Preparation Time</p>
+                    <h6><span class="text-danger">{{recipe.prepTimeMinutes}}</span> Minutes</h6>
+                </div>
+                <div class="d-flex flex-column align-items-center">
+                    <img class="rounded-circle shadow" height="70px" src="https://png.pngtree.com/png-clipart/20220911/original/pngtree-chef-hat-and-cooking-logo-png-image_8538758.png" alt="">
+                    <p class="fw-bold mt-2">Cooking</p>
+                    <h6><span class="text-danger">{{recipe.cookTimeMinutes}}</span> Minutes</h6>
+                </div>
+                <div class="d-flex flex-column align-items-center">
+                    <img class="rounded-circle shadow" height="70px" src="https://cdn1.iconfinder.com/data/icons/fitness-sport/512/calories-512.png" alt="">
+                    <p class="fw-bold mt-2">Calories per unit</p>
+                    <h6><span class="text-danger">{{recipe.caloriesPerServing}}</span></h6>
+                </div>
+            </div>
+            <div class="my-5 p-4 bg-light rounded shadow">
+                <h2 class="text-dark">Ingredients Needed</h2>
+                <ol class="ps-3">
+                   @for (item of recipe.ingredients; track $index) {
+                    <li class="fw-medium text-dark">{{item}}</li>
+                   }
+                </ol>
+            </div>
+            <div class="my-5 p-4 bg-light rounded shadow">
+                <h2 class="text-dark">Cooking Instructions</h2>
+                <ol class="ps-3">
+                    @for (item of recipe.instructions; track $index) {
+                        <li class="fw-medium text-dark">{{item}}</li>
+                    }
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <h1 class="text-center text-dark fw-bold">Related Recipes</h1>
+        <div *ngIf="allRelatedRecipe.length > 0; else noRelated" class="row mt-4">
+            @for (item of allRelatedRecipe; track $index) {
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <a routerLink="/recipe/{{item._id}}/view" class="text-decoration-none">
+                        <div class="card shadow-lg border-0 rounded text-center">
+                            <img class="img-fluid rounded-top related-img" [src]="item.image" alt="{{item.name}}">
+                            <div class="card-body">
+                                <h6 class="fw-bold text-dark">{{item.name}}</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    
+        <!-- Show message when no related recipes exist -->
+        <ng-template #noRelated>
+            <p class="text-center text-muted fw-bold mt-3">No related recipes found.</p>
+        </ng-template>
+    </div>
+    
+</div>

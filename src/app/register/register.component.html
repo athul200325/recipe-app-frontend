@@ -1,0 +1,55 @@
+<div class="container-fluid vh-100">
+    <div class="row h-100">
+        <!-- Left Side: Background Image & Text -->
+        <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center position-relative text-white text-center register-bg">
+            <div class="overlay"></div>
+            <h1 class="display-4 text-light fw-bold position-relative">Join TastyTrail</h1>
+            <h2 style="color: rgb(231, 231, 231);" class="lead display-6 position-relative">Save & Discover New Recipes</h2>
+            <p style="color: rgb(187, 187, 187);" class="lead position-relative">Unlock access to 100+ delicious recipes...</p>
+            <div class="text-start mt-4 position-relative">
+                <h4 class="text-light">Why Register?</h4>
+                <ul class="text-light">
+                    <li>Explore different cuisines</li>
+                    <li>Easy step-by-step guides</li>
+                    <li>Save & manage your favorite recipes</li>
+                    <li>Download printable recipe sheets</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right Side: Registration Form -->
+        <div class="col-lg-6 d-flex justify-content-center align-items-center">
+            <div class="register-box p-5 rounded shadow-lg">
+                <h3 class="text-center text-success mb-4">
+                    <i class="fa-solid fa-utensils fa-flip"></i> TastyTrail
+                </h3>
+                <form [formGroup]="registerForm" (ngSubmit)="register()">
+                    <div class="mb-3">
+                        <input type="text" name="username" formControlName="username" placeholder="Enter Your Username" class="form-control">
+                        @if (registerForm.get("username")?.errors && registerForm.get('username')?.touched) {
+                            <div class="text-danger small mt-1">*Invalid username</div>
+                        }
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" name="email" formControlName="email" placeholder="Enter Your Email" class="form-control">
+                        @if (registerForm.get("email")?.errors && registerForm.get('email')?.touched) {
+                            <div class="text-danger small mt-1">*Invalid email</div>
+                        }
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" name="password" formControlName="password" placeholder="Enter Your Password" class="form-control">
+                        @if (registerForm.get("password")?.errors && registerForm.get('password')?.touched) {
+                            <div class="text-danger small mt-1">*Invalid password</div>
+                        }
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn bg-success ">Register</button>
+                    </div>
+                </form>
+                <p class="mt-3 text-center">
+                    Already have an account? <a routerLink="/login" class="text-success">Login here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

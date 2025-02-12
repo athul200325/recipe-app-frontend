@@ -1,0 +1,82 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div style="min-height: 100vh;" class="bg-success text-light col-lg-3 col-sm-3 d-flex flex-column p-3 shadow position-fixed">
+      <!-- Sidebar Brand -->
+      <h5 class="text-center pb-3 border-bottom">
+        <a class="navbar-brand fw-bold text-light" routerLink="">
+          <i class="fa-solid fa-utensils me-2"></i> TastyTrails Admin
+        </a>
+      </h5>
+
+      <!-- Sidebar Menu -->
+      <ul class="nav flex-column mt-3">
+        <li class="nav-item">
+          <a class="nav-link text-light sidebar-link ms-3 mb-2" routerLink="/admin">
+            <i class="fa-solid fa-chart-line me-2"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/recipe/add">
+            <i class="fa-solid fa-plus me-2"></i> Manage Recipe
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-recipes">
+            <i class="fa-solid fa-list me-2"></i> Recipe List
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-request">
+            <i class="fa-solid fa-envelope me-2"></i> Requests
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-downloads">
+            <i class="fa-solid fa-download me-2"></i> Downloads
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-users">
+            <i class="fa-solid fa-users me-2"></i> Users
+          </a>
+        </li>
+
+        <!-- Logout Button -->
+        <li class="nav-item mt-4">
+          <button class="btn btn-outline-light w-100 py-2 sidebar-logout">
+            <i class="fa-solid fa-right-from-bracket me-2"></i> Logout
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div style="height: 84vh;" class="col  offset-lg-3 p-4">
+      <h1 class="text-start text-dark fw-medium">All Downloads</h1>
+
+      <table class="table shadow my-5">
+        <thead class="bg-light">
+          <tr>
+            <th class="text-start">#</th>
+            <th class="text-start">Recipe Id</th>
+            <th class="text-start">Recipe Name</th>
+            <th class="text-start">Recipe Cuisine</th>
+            <th class="text-start">Recipe Download Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (download of allDownloads; track $index; let i = $index) {
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>{{ download.recipeId }}</td>
+              <td>{{ download.recipeName }}</td>
+              <td>{{ download.recipeCuisine }}</td>
+              <td>{{ download.count }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

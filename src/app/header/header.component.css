@@ -1,0 +1,47 @@
+
+  .nav-link:hover {
+    color: #E9EED9 !important; 
+  }
+  .dropdown button:hover{
+    color: #000000 !important; 
+
+  }
+  .dropdown-menu{
+    background-color: #9A7E6F;
+    padding: 10px;
+  }
+
+  .dropdown-item:hover{
+    
+    background-color: #E9EED9;
+    color: #54473F !important; 
+    border-radius: 50px; 
+    transition: all 0.3s ease-in-out;
+  }
+
+
+  .hover-effect {
+    transition: all 0.3s ease;
+  }
+  .hover-effect:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+  .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #28a745 !important;
+  }
+
+
+
+  .username-hover {
+    transition: color 0.3s ease-in-out;
+}
+
+.btn:hover .username-hover {
+    color: black !important;
+}
+
+.btn {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Adjust as needed */
+}

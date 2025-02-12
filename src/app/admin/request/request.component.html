@@ -1,0 +1,97 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div style="min-height: 100vh;" class="bg-success text-light col-lg-3 col-sm-3 d-flex flex-column p-3 shadow position-fixed">
+      <!-- Sidebar Brand -->
+      <h5 class="text-center pb-3 border-bottom">
+        <a class="navbar-brand fw-bold text-light" routerLink="">
+          <i class="fa-solid fa-utensils me-2"></i> TastyTrails Admin
+        </a>
+      </h5>
+
+      <!-- Sidebar Menu -->
+      <ul class="nav flex-column mt-3">
+        <li class="nav-item">
+          <a class="nav-link text-light sidebar-link ms-3 mb-2" routerLink="/admin">
+            <i class="fa-solid fa-chart-line me-2"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/recipe/add">
+            <i class="fa-solid fa-plus me-2"></i> Manage Recipe
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-recipes">
+            <i class="fa-solid fa-list me-2"></i> Recipe List
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-request">
+            <i class="fa-solid fa-envelope me-2"></i> Requests
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-downloads">
+            <i class="fa-solid fa-download me-2"></i> Downloads
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link sidebar-link ms-3 mb-2" routerLink="/admin/all-users">
+            <i class="fa-solid fa-users me-2"></i> Users
+          </a>
+        </li>
+
+        <!-- Logout Button -->
+        <li class="nav-item mt-4">
+          <button class="btn btn-outline-light w-100 py-2 sidebar-logout">
+            <i class="fa-solid fa-right-from-bracket me-2"></i> Logout
+          </button>
+        </li>
+      </ul>
+    </div>
+    <!-- Main Content -->
+    <div style="height: 84vh;" class="col offset-lg-3 offset-md-4 p-4">
+      <h1 class="text-start text-dark fw-medium">All Testimonies</h1>
+      <table class="table shadow my-5">
+        <thead class="bg-light">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of allTestimony; track $index; let i = $index) {
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.message }}</td>
+              <td>
+                @if (item.status == "pending") {
+                  <div class="d-flex">
+                    <button class="btn btn-success me-2" (click)="updateTestimonyStatus(item._id, 'Approved')">
+                      <i class="fa-solid fa-check"></i> Approve
+                    </button>
+                    <button class="btn btn-danger" (click)="updateTestimonyStatus(item._id, 'Rejected')">
+                      <i class="fa-solid fa-xmark"></i> Reject
+                    </button>
+                  </div>
+                }
+                @else if (item.status == "Approved") {
+                  <button class="btn btn-success">Approved</button>
+                }
+                @else {
+                  <button class="btn btn-danger">Rejected</button>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

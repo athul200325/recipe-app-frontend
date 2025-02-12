@@ -1,0 +1,30 @@
+
+h1{
+    color:#CBD2A4;
+}
+.head2{
+    color:#8c926a;
+}
+p{
+    color: #9A7E6F;
+}
+.head{
+    color: #3c2b22;
+}
+h3{
+    color:#A9B57F;
+}
+h4{
+    color:#8A9A64;
+}
+h5{
+    color:#6A7A4C;
+}
+.btn{
+    background-color: #54602F;
+    color:#CBD2A4;
+}
+.btn:hover{
+    outline:2px solid #CBD2A4;
+    color: #CBD2A4;
+}

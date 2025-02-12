@@ -1,0 +1,40 @@
+<div class="container-fluid vh-100">
+    <div class="row h-100">
+        <!-- Left side with Background Image -->
+        <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center position-relative text-white text-center login-bg">
+            <div class="overlay "></div>
+            <h1 class="display-4 text-light fw-bold position-relative">Welcome to TastyTrail</h1>
+            <h2 style="color: rgb(231, 231, 231);" class="lead display-6 position-relative">Discover & Save Your Favorite Recipes</h2>
+            <p style="color: rgb(187, 187, 187);" class="lead position-relative">Explore 100+ recipesin your hand...</p>
+        </div>
+
+        <!-- Right side with Login Form -->
+        <div class="col-lg-6 d-flex justify-content-center align-items-center">
+            <div class="login-box p-5 rounded shadow-lg">
+                <h3 class="text-center text-success mb-4">
+                    <i class="fa-solid fa-utensils fa-flip"></i> TastyTrail
+                </h3>
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+                    <div class="mb-3">
+                        <input type="email" name="email" formControlName="email" placeholder="Enter your email" class="form-control">
+                        @if (loginForm.get("email")?.errors && loginForm.get('email')?.touched) {
+                            <div class="text-danger small mt-1">*Invalid email</div>
+                        }
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" name="password" formControlName="password" placeholder="Enter your password" class="form-control">
+                        @if (loginForm.get("password")?.errors && loginForm.get('password')?.touched) {
+                            <div class="text-danger small mt-1">*Invalid password</div>
+                        }
+                    </div>
+                    <div class="d-grid">
+                        <button class="btn bg-success">Login</button>
+                    </div>
+                </form>
+                <p class="mt-3 text-center">
+                    <a routerLink="/register" class="text-success">New user?</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
